@@ -71,7 +71,7 @@ class Dict(Space[typing.Dict[str, Any]], typing.Mapping[str, Space[Any]]):
             # for legacy reasons, we need to preserve the sorted dictionary items.
             # as this could matter for projects flatten the dictionary.
             try:
-                spaces = dict(sorted(spaces.items()))
+                spaces = dict(spaces.items())  # ToDo: PR to properly remove sorted()
             except TypeError:
                 # Incomparable types (e.g. `int` vs. `str`, or user-defined types) found.
                 # The keys remain in the insertion order.
